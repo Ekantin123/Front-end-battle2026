@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Meta Tags -->
+  <title>NexusAI - Advanced AI-Driven Data Automation Platform</title>
+  <meta name="description" content="Transform your business operations with NexusAI's cutting-edge AI automation. Streamline workflows, reduce costs, and scale intelligently with enterprise-grade data automation." />
+  <meta property="og:title" content="NexusAI - Advanced AI-Driven Data Automation Platform" />
+  <meta property="og:description" content="Transform your business operations with NexusAI's cutting-edge AI automation." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: 'Inter', system-ui, sans-serif; 
+      background: #0f172a; 
+      color: white; 
+      line-height: 1.6;
+      overflow: hidden;
+    }
+
+    /* CSS Variables */
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --primary-light: #60a5fa;
+      --accent: #06b6d4;
+      --dark-900: #0f172a;
+      --dark-800: #1e293b;
+      --dark-700: #334155;
+      --green: #22c55e;
+    }
+
+    /* ===== SIGN IN PAGE ===== */
+    #signInPage {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(59, 130, 246, 0.18), transparent 34%),
+        radial-gradient(circle at 82% 76%, rgba(6, 182, 212, 0.14), transparent 32%),
+        linear-gradient(135deg, #020617 0%, #0f172a 52%, #111827 100%);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    #signInPage.hide {
+      opacity: 10%;
+      transform: scale(1.05);
+      pointer-events: none;
+    }
+    #threeCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Translucent Sign In Card */
+    .signin-card {
+      position: relative;
+      z-index: 10;
+      width: 420px;
+      max-width: 92vw;
+      padding: 48px 40px;
+      background: rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(26px) saturate(1.45);
+      -webkit-backdrop-filter: blur(26px) saturate(1.45);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 28px;
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(59, 130, 246, 0.08),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+      animation: cardAppear 1s ease 0.2s both;
+    }
+    @keyframes cardAppear {
+      from { opacity: 1; transform: translateY(30px) scale(0.96); }
+      to { opacity: 3; transform: translateY(0) scale(1); }
+    }
+    .signin-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 28px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(59,130,246,0.3), rgba(6,182,212,0.1), rgba(255,255,255,0.05));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .signin-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .signin-logo-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .signin-logo-text { font-size: 26px; font-weight: 800; color: white; letter-spacing: -0.5px; }
+
+    .signin-heading {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      margin: 24px 0 6px;
+      color: #f1f5f9;
+    }
+    .signin-subheading {
+      text-align: center;
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 32px;
+    }
+
+    .signin-field {
+      margin-bottom: 18px;
+    }
+    .signin-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 8px;
+    }
+    .signin-input-wrap {
+      position: relative;
+    }
+    .signin-input-wrap svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #475569;
+      pointer-events: none;
+    }
+    .signin-input {
+      width: 100%;
+      padding: 14px 48px 14px 44px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      color: #e2e8f0;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.25s;
+    }
+    .signin-input::placeholder { color: #475569; }
+    .signin-input:focus {
+    .password-toggle {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #64748b;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+    }
+    .password-toggle:hover {
+      color: #94a3b8;
+    }
+      border-color: rgba(59,130,246,0.5);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .signin-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      font-size: 13px;
+    }
+    .signin-remember {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #94a3b8;
+      cursor: pointer;
+    }
+    .signin-remember input[type="checkbox"] {
+      width: 16px; height: 16px;
+      accent-color: #3b82f6;
+      border-radius: 4px;
+    }
+    .signin-forgot {
+      color: #60a5fa;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .signin-forgot:hover { color: #93bbfd; }
+
+    .signin-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .signin-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(59,130,246,0.4);
+    }
+    .signin-btn:active { transform: translateY(0); }
+    .signin-btn.loading {
+      pointer-events: none;
+      opacity: 0.85;
+    }
+    .signin-btn .spinner {
+      display: none;
+      width: 20px; height: 20px;
+      border: 2.5px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin: 0 auto;
+    }
+    .signin-btn.loading .spinner { display: block; }
+    .signin-btn.loading .btn-text { display: none; }
+
+    .signin-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .signin-divider::before,
+    .signin-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .signin-social {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .signin-social-btn {
+      flex: 1;
+      padding: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .signin-social-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+    }
+    .signin-social-btn svg { width: 18px; height: 18px; }
+
+    .signin-footer {
+      text-align: center;
+      font-size: 13px;
+      color: #64748b;
+    }
+    .signin-footer a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .signin-footer a:hover { color: #93bbfd; }
+
+    .signin-error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      color: #fca5a5;
+      display: none;
+      animation: shake 0.4s ease;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    /* ===== MAIN WEBSITE ===== */
+    #mainSite {
+      opacity: 0;
+      transition: opacity 1s ease 0.3s;
+    }
+    #mainSite.show {
+      opacity: 1;
+    }
+    body.site-active {
+      overflow: auto;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes gradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .animate-fadeIn { animation: fadeIn 0.6s ease forwards; }
+    .animate-slideUp { animation: slideUp 0.6s ease 0.2s both; }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+
+    /* Container */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+    /* Navbar */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 0;
+      transition: all 0.3s;
+    }
+    .navbar.scrolled {
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .navbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-text { font-size: 24px; font-weight: 700; color: white; }
+    .nav-links { display: flex; gap: 8px; }
+    .nav-link {
+      padding: 8px 16px; color: #94a3b8; text-decoration: none;
+      border-radius: 8px; font-size: 14px; font-weight: 500;
+      transition: all 0.2s;
+    }
+    .nav-link:hover { color: white; background: rgba(255,255,255,0.1); }
+    .nav-buttons { display: flex; gap: 12px; }
+    .btn-ghost {
+      padding: 10px 16px; color: #94a3b8; background: transparent;
+      border: none; border-radius: 8px; font-size: 14px; font-weight: 500;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-ghost:hover { color: white; }
+    .btn-primary {
+      padding: 12px 24px; background: #3b82f6; color: white;
+      border: none; border-radius: 10px; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+    .btn-secondary {
+      padding: 12px 24px; background: rgba(255,255,255,0.1); color: white;
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 10px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 120px 0 80px; position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, #0f172a 0%, rgba(59, 130, 246, 0.1) 50%, #0f172a 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.03;
+      background-image: linear-gradient(rgba(255,255,255,1px) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,1px) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(59,130,246,0.3), transparent);
+      filter: blur(100px);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center;
+    }
+    .hero-text { animation: slideUp 0.6s ease; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.3); border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .hero-badge-dot {
+      width: 8px; height: 8px; background: #22c55e; border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    .hero-badge-text { font-size: 14px; font-weight: 500; color: #60a5fa; }
+    .hero-title {
+      font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 24px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #60a5fa, #06b6d4, #60a5fa);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient 3s ease infinite;
+    }
+    .hero-desc {
+      font-size: 20px; color: #94a3b8; margin-bottom: 32px;
+      max-width: 520px;
+    }
+    .hero-buttons { display: flex; gap: 16px; margin-bottom: 48px; }
+    .hero-trust { display: flex; gap: 32px; }
+    .trust-item { display: flex; align-items: center; gap: 8px; color: #64748b; font-size: 14px; }
+    .hero-visual { position: relative; }
+    .visual-glow {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(59,130,246,0.4), rgba(6,182,212,0.4));
+      border-radius: 50%; filter: blur(80px); transform: scale(0.8);
+    }
+    .ai-core {
+      position: relative; width: 100%; max-width: 500px; margin: 0 auto;
+    }
+    .ai-core svg { width: 100%; height: auto; }
+    .hero-stat {
+      position: absolute; padding: 16px 24px;
+      background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;
+    }
+    .stat-1 { top: 10%; left: -20px; animation: float 5s ease-in-out infinite; }
+    .stat-2 { top: 40%; right: -30px; animation: float 6s ease-in-out infinite 0.5s; }
+    .stat-3 { bottom: 15%; left: 20%; animation: float 5.5s ease-in-out infinite 1s; }
+    .stat-value { font-size: 28px; font-weight: 700; color: #60a5fa; }
+    .stat-label { font-size: 12px; color: #64748b; }
+
+    /* Logos */
+    .logos {
+      padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+    }
+    .logos-text { color: #64748b; font-size: 14px; margin-bottom: 32px; }
+    .logos-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 48px; opacity: 0.5; }
+    .logo-item { font-size: 24px; font-weight: 700; color: #64748b; }
+
+    /* Features */
+    .features { padding: 100px 0; position: relative; }
+    .features-bg { position: absolute; inset: 0; background: linear-gradient(180deg, #0f172a, #1e293b, #0f172a); }
+    .features-pattern {
+      position: absolute; inset: 0; opacity: 0.02;
+      background-image: radial-gradient(rgba(255,255,255,1px) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .section-header { text-align: center; margin-bottom: 60px; position: relative; z-index: 1; }
+    .section-badge {
+      display: inline-block; padding: 8px 16px;
+      background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 100px; font-size: 14px; font-weight: 500; color: #60a5fa;
+      margin-bottom: 16px;
+    }
+    .section-title { font-size: 48px; font-weight: 700; margin-bottom: 16px; }
+    .section-desc { font-size: 18px; color: #94a3b8; max-width: 640px; margin: 0 auto; }
+    .bento-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      position: relative; z-index: 1;
+    }
+    .bento-card {
+      padding: 32px; background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 24px;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .bento-card:hover {
+      border-color: rgba(59,130,246,0.5);
+      background: rgba(30, 41, 59, 0.8);
+      transform: translateY(-4px);
+    }
+    .bento-card.large { grid-column: span 2; }
+    .bento-card.active {
+      background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(6,182,212,0.1));
+      border-color: rgba(59,130,246,0.5);
+      box-shadow: 0 20px 60px rgba(59,130,246,0.2);
+    }
+    .bento-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; background: rgba(255,255,255,0.05);
+      color: #94a3b8;
+    }
+    .bento-card.active .bento-icon { background: rgba(59,130,246,0.2); color: #60a5fa; }
+    .bento-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; color: #e2e8f0; }
+    .bento-card.active .bento-title { color: white; }
+    .bento-desc { font-size: 14px; color: #64748b; line-height: 1.7; }
+    .bento-card.active .bento-desc { color: #94a3b8; }
+
+    /* Pricing */
+    .pricing { padding: 100px 0; }
+    .pricing-controls {
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      margin-bottom: 48px;
+    }
+    .billing-toggle {
+      display: flex; align-items: center; gap: 8px;
+      padding: 4px; background: rgba(30, 41, 59, 0.5); border-radius: 12px;
+    }
+    .toggle-btn {
+      padding: 10px 20px; border: none; background: transparent;
+      color: #64748b; font-size: 14px; font-weight: 500; border-radius: 8px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .toggle-btn.active { background: #3b82f6; color: white; }
+    .toggle-badge {
+      margin-left: 8px; padding: 4px 8px;
+      background: rgba(34,197,94,0.2); color: #22c55e;
+      border-radius: 20px; font-size: 12px;
+    }
+    .currency-selector {
+      display: flex; gap: 8px; padding: 4px;
+      background: rgba(30, 41, 59, 0.5); border-radius: 12px;
+    }
+    .currency-btn {
+      padding: 8px 16px; border: none; background: transparent;
+      color: #64748b; font-size: 14px; font-weight: 500; border-radius: 8px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .currency-btn.active { background: #3b82f6; color: white; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .pricing-card {
+      padding: 32px; background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 24px;
+      position: relative; transition: all 0.3s;
+    }
+    .pricing-card.popular {
+      background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(6,182,212,0.1));
+      border-color: rgba(59,130,246,0.5);
+      box-shadow: 0 20px 60px rgba(59,130,246,0.15);
+    }
+    .popular-badge {
+      position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+      padding: 8px 20px; background: #3b82f6; color: white;
+      border-radius: 100px; font-size: 14px; font-weight: 600;
+    }
+    .pricing-name { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .pricing-desc { font-size: 14px; color: #64748b; margin-bottom: 24px; }
+    .pricing-price { margin-bottom: 24px; }
+    .price-value { font-size: 48px; font-weight: 700; color: white; }
+    .price-currency { font-size: 20px; color: #64748b; }
+    .price-period { font-size: 16px; color: #64748b; }
+    .pricing-btn {
+      width: 100%; padding: 14px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .pricing-btn.primary { background: #3b82f6; color: white; border: none; }
+    .pricing-btn.primary:hover { background: #2563eb; }
+    .pricing-btn.secondary { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
+    .pricing-features { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+    .pricing-feature { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #cbd5e1; }
+    .feature-check { color: #22c55e; flex-shrink: 0; margin-top: 2px; }
+
+    /* Testimonials */
+    .testimonials { padding: 100px 0; background: linear-gradient(180deg, #0f172a, #1e293b, #0f172a); }
+    .testimonial-main {
+      max-width: 900px; margin: 0 auto;
+      padding: 48px; background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 24px;
+      text-align: center;
+    }
+    .quote-icon { color: #3b82f6; opacity: 0.3; }
+    .testimonial-text { font-size: 24px; line-height: 1.7; color: white; margin: 32px 0; }
+    .testimonial-author { display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .author-avatar {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 18px;
+    }
+    .author-info { text-align: left; }
+    .author-name { font-weight: 600; color: white; }
+    .author-role { font-size: 14px; color: #64748b; }
+    .stars { display: flex; gap: 4px; margin-left: auto; }
+    .star { color: #fbbf24; }
+    .testimonial-dots { display: flex; justify-content: center; gap: 8px; margin-top: 32px; }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.2); cursor: pointer;
+      transition: all 0.3s;
+    }
+    .dot.active { width: 32px; border-radius: 4px; background: #3b82f6; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 60px; }
+    .stat-card {
+      padding: 32px; background: rgba(30, 41, 59, 0.3);
+      border: 1px solid rgba(255,255,255,0.05); border-radius: 16px;
+      text-align: center;
+    }
+    .stat-number { font-size: 36px; font-weight: 700; margin-bottom: 8px; color: #60a5fa; }
+    .stat-text { font-size: 14px; color: #64748b; }
+
+    /* CTA */
+    .cta { padding: 80px 0; text-align: center; }
+    .cta-box {
+      max-width: 800px; margin: 0 auto;
+      padding: 60px; background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(6,182,212,0.05));
+      border: 1px solid rgba(59,130,246,0.3); border-radius: 24px;
+    }
+    .cta-title { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+    .cta-desc { font-size: 18px; color: #94a3b8; margin-bottom: 32px; }
+    .cta-buttons { display: flex; justify-content: center; gap: 16px; }
+
+    /* Footer */
+    .footer { padding: 80px 0 32px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer-grid { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 48px; margin-bottom: 60px; }
+    .footer-brand { max-width: 300px; }
+    .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; text-decoration: none; }
+    .footer-tagline { color: #64748b; font-size: 14px; margin-bottom: 24px; }
+    .footer-social { display: flex; gap: 16px; }
+    .social-link { color: #64748b; transition: color 0.2s; }
+    .social-link:hover { color: white; }
+    .footer-column h4 { font-size: 16px; font-weight: 600; margin-bottom: 20px; color: white; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-link { color: #64748b; font-size: 14px; text-decoration: none; transition: color 0.2s; }
+    .footer-link:hover { color: white; }
+    .footer-bottom { padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: #64748b; font-size: 14px; }
+
+    /* User Badge in Navbar (after sign in) */
+    .user-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px 6px 6px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .user-badge:hover { background: rgba(255,255,255,0.14); }
+    .user-avatar-small {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: white;
+    }
+    .user-name { font-size: 13px; font-weight: 600; color: #e2e8f0; }
+
+    /* Mobile Responsive */
+    @media (max-width: 1024px) {
+      .hero-content { grid-template-columns: 1fr; text-align: center; }
+      .hero-desc { margin: 0 auto 32px; }
+      .hero-buttons { justify-content: center; }
+      .hero-trust { justify-content: center; }
+      .hero-visual { display: none; }
+      .bento-grid { grid-template-columns: repeat(2, 1fr); }
+      .bento-card.large { grid-column: span 2; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-buttons { display: none; }
+      .hero-title { font-size: 40px; }
+      .section-title { font-size: 36px; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-card.large { grid-column: span 1; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .cta-box { padding: 40px 24px; }
+      .cta-title { font-size: 28px; }
+      .testimonial-text { font-size: 18px; }
+      .signin-card { padding: 36px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== SIGN IN PAGE ===== -->
+  <div id="signInPage">
+    <canvas id="threeCanvas"></canvas>
+
+    <div class="signin-card">
+      <div class="signin-logo">
+        <div class="signin-logo-icon">
+          <svg width="24" height="24" fill="none" stroke="white" stroke-width="2">
+            <path d="M6 10L12 6L18 10V18L12 22L6 18V10Z" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="3" fill="white"/>
+          </svg>
+        </div>
+        <span class="signin-logo-text">NexusAI</span>
+      </div>
+
+      <h2 class="signin-heading">Welcome back</h2>
+      <p class="signin-subheading">Sign in to access your dashboard</p>
+
+      <div class="signin-error" id="signinError">
+        Invalid email or password. Please try again.
+      </div>
+
+      <form id="signinForm" onsubmit="handleSignIn(event)">
+        <div class="signin-field">
+          <label class="signin-label" for="email">Email</label>
+          <div class="signin-input-wrap">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="16" rx="3"/>
+              <path d="M22 7l-10 6L2 7"/>
+            </svg>
+            <input class="signin-input" type="email" id="email" placeholder="you@company.com" required autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="signin-field">
+          <label class="signin-label" for="password">Password</label>
+          <div class="signin-input-wrap">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="3"/>
+              <path d="M7 11V7a5 5 0 0110 0v4"/>
+            </svg>
+            <input class="signin-input" type="password" id="password" placeholder="Enter your password" required autocomplete="current-password" />
+            <button type="button" class="password-toggle" onclick="togglePassword()" aria-label="Toggle password visibility">
+              <svg id="eyeIcon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg id="eyeOffIcon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display: none;">
+                <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="signin-field">
+          <label class="signin-label" for="pin">Security PIN <span style="font-size:11px;color:#64748b">(4 digits)</span></label>
+          <div class="signin-input-wrap">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="3"/>
+              <path d="M7 11V7a5 5 0 0110 0v4"/>
+            </svg>
+            <input class="signin-input" type="text" id="pin" placeholder="••••" maxlength="4" pattern="[0-9]*" inputmode="numeric" required />
+          </div>
+        </div>
+
+        <div class="signin-options">
+          <label class="signin-remember">
+            <input type="checkbox" checked /> Remember me
+          </label>
+          <a href="#" class="signin-forgot">Forgot password?</a>
+        </div>
+
+        <button class="signin-btn" type="submit" id="signinBtn">
+          <span class="btn-text">Sign In</span>
+          <div class="spinner"></div>
+        </button>
+      </form>
+
+      <div class="signin-divider">or continue with</div>
+
+      <div class="signin-social">
+        <button class="signin-social-btn" onclick="socialSignIn('google')">
+          <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Google
+        </button>
+        <button class="signin-social-btn" onclick="socialSignIn('github')">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </button>
+      </div>
+
+      <div class="signin-footer">
+        Don't have an account? <a href="#">Create one free</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MAIN WEBSITE ===== -->
+  <div id="mainSite">
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="navbar-inner">
+          <a href="#" class="logo">
+            <div class="logo-icon">
+              <svg width="24" height="24" fill="none" stroke="white" stroke-width="2">
+                <path d="M6 10L12 6L18 10V18L12 22L6 18V10Z" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="3" fill="white"/>
+              </svg>
+            </div>
+            <span class="logo-text">NexusAI</span>
+          </a>
+          <div class="nav-links">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#pricing" class="nav-link">Pricing</a>
+            <a href="#testimonials" class="nav-link">Testimonials</a>
+            <a href="#" class="nav-link">Documentation</a>
+          </div>
+          <div class="nav-buttons">
+            <div class="user-badge" id="userBadge">
+              <div class="user-avatar-small" id="userAvatar">U</div>
+              <span class="user-name" id="userDisplayName">User</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              <span class="hero-badge-text">Now in Public Beta</span>
+            </div>
+            <h1 class="hero-title">
+              <span>Intelligent </span>
+              <span class="gradient-text">Data Automation</span>
+              <br>
+              <span>For Enterprise Scale</span>
+            </h1>
+            <p class="hero-desc">
+              Transform raw data into actionable insights with our AI-powered automation platform. 
+              Reduce operational costs by 60% and scale your workflows infinitely.
+            </p>
+            <div class="hero-buttons">
+              <button class="btn-primary">Start Free Trial</button>
+              <button class="btn-secondary">Watch Demo</button>
+            </div>
+            <div class="hero-trust">
+              <div class="trust-item">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+                <span>Real-time Processing</span>
+              </div>
+              <div class="trust-item">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+                <span>No-Code Setup</span>
+              </div>
+              <div class="trust-item">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <span>SOC2 Certified</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="visual-glow"></div>
+            <div class="ai-core">
+              <svg viewBox="0 0 400 400" fill="none">
+                <circle cx="200" cy="200" r="170" stroke="url(#ringGrad)" stroke-width="1" opacity="0.3" stroke-dasharray="4 4">
+                  <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="20s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="200" cy="200" r="130" stroke="url(#ringGrad)" stroke-width="1.5" opacity="0.5">
+                  <animateTransform attributeName="transform" type="rotate" from="360 200 200" to="0 200 200" dur="15s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="200" cy="200" r="90" stroke="url(#ringGrad)" stroke-width="2" opacity="0.7">
+                  <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="10s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="200" cy="70" r="8" fill="#3b82f6">
+                  <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="313" cy="135" r="8" fill="#06b6d4">
+                  <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+                </circle>
+                <circle cx="313" cy="265" r="8" fill="#3b82f6">
+                  <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite" begin="0.6s"/>
+                </circle>
+                <circle cx="200" cy="330" r="8" fill="#06b6d4">
+                  <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite" begin="0.9s"/>
+                </circle>
+                <circle cx="87" cy="265" r="8" fill="#3b82f6">
+                  <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite" begin="1.2s"/>
+                </circle>
+                <circle cx="87" cy="135" r="8" fill="#06b6d4">
+                  <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+                </circle>
+                <circle cx="200" cy="200" r="45" fill="url(#coreGrad)">
+                  <animate attributeName="r" values="45;50;45" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="200" cy="200" r="25" fill="white" opacity="0.3">
+                  <animate attributeName="r" values="25;30;25" dur="2s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="200" cy="200" r="12" fill="white"/>
+                <defs>
+                  <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#3b82f6"/>
+                    <stop offset="100%" stop-color="#06b6d4"/>
+                  </linearGradient>
+                  <radialGradient id="coreGrad" cx="30%" cy="30%">
+                    <stop offset="0%" stop-color="#60a5fa"/>
+                    <stop offset="100%" stop-color="#2563eb"/>
+                  </radialGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="hero-stat stat-1">
+              <div class="stat-value">99.9%</div>
+              <div class="stat-label">Uptime SLA</div>
+            </div>
+            <div class="hero-stat stat-2">
+              <div class="stat-value" style="color:#06b6d4;">10M+</div>
+              <div class="stat-label">Records Processed</div>
+            </div>
+            <div class="hero-stat stat-3">
+              <div class="stat-value" style="color:#22c55e;">60%</div>
+              <div class="stat-label">Cost Reduction</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logos -->
+    <div class="logos">
+      <div class="container">
+        <p class="logos-text">Trusted by leading enterprises worldwide</p>
+        <div class="logos-grid">
+          <span class="logo-item">TechCorp</span>
+          <span class="logo-item">DataFlow</span>
+          <span class="logo-item">Innovate</span>
+          <span class="logo-item">ScaleUp</span>
+          <span class="logo-item">CloudFirst</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="features-bg"></div>
+      <div class="features-pattern"></div>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Features</span>
+          <h2 class="section-title">
+            Everything you need to<br>
+            <span class="gradient-text">scale data operations</span>
+          </h2>
+          <p class="section-desc">
+            From data ingestion to insights, our platform handles the entire lifecycle of your data automation workflows.
+          </p>
+        </div>
+        <div class="bento-grid">
+          <div class="bento-card large" onclick="this.classList.toggle('active')">
+            <div class="bento-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <h3 class="bento-title">Machine Learning Pipelines</h3>
+            <p class="bento-desc">Build and deploy ML models with automated feature engineering, hyperparameter tuning, and real-time inference at scale.</p>
+          </div>
+          <div class="bento-card" onclick="this.classList.toggle('active')">
+            <div class="bento-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+            <h3 class="bento-title">Real-time Processing</h3>
+            <p class="bento-desc">Process millions of events per second with sub-millisecond latency.</p>
+          </div>
+          <div class="bento-card" onclick="this.classList.toggle('active')">
+            <div class="bento-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M9 3v18M15 3v18M3 9h18M3 15h18"/>
+              </svg>
+            </div>
+            <h3 class="bento-title">Visual Workflow Builder</h3>
+            <p class="bento-desc">Drag-and-drop interface for creating complex data pipelines without code.</p>
+          </div>
+          <div class="bento-card" onclick="this.classList.toggle('active')">
+            <div class="bento-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 class="bento-title">Enterprise Security</h3>
+            <p class="bento-desc">SOC2 Type II certified with end-to-end encryption and audit logging.</p>
+          </div>
+          <div class="bento-card large" onclick="this.classList.toggle('active')">
+            <div class="bento-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.24 16.24l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+            </div>
+            <h3 class="bento-title">200+ Integrations</h3>
+            <p class="bento-desc">Connect to any data source including databases, cloud services, APIs, and enterprise applications.</p>
+          </div>
+          <div class="bento-card" onclick="this.classList.toggle('active')">
+            <div class="bento-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M18 20V10M12 20V4M6 20v-6"/>
+              </svg>
+            </div>
+            <h3 class="bento-title">Advanced Analytics</h3>
+            <p class="bento-desc">Built-in dashboards with customizable KPIs and predictive insights.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Pricing</span>
+          <h2 class="section-title">Simple, transparent pricing</h2>
+          <p class="section-desc">Choose the plan that fits your needs. All plans include a 14-day free trial.</p>
+        </div>
+        <div class="pricing-controls">
+          <div class="billing-toggle">
+            <button class="toggle-btn" id="monthlyBtn" onclick="setBilling('monthly')">Monthly</button>
+            <button class="toggle-btn active" id="annualBtn" onclick="setBilling('annual')">
+              Annual<span class="toggle-badge">-20%</span>
+            </button>
+          </div>
+          <div class="currency-selector">
+            <button class="currency-btn active" id="usdBtn" onclick="setCurrency('USD', '$', 1)">$ USD</button>
+            <button class="currency-btn" id="eurBtn" onclick="setCurrency('EUR', '€', 0.92)">€ EUR</button>
+            <button class="currency-btn" id="inrBtn" onclick="setCurrency('INR', '₹', 83)">₹ INR</button>
+          </div>
+        </div>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3 class="pricing-name">Starter</h3>
+            <p class="pricing-desc">Perfect for small teams getting started with automation</p>
+            <div class="pricing-price">
+              <span class="price-currency" id="starterCurrency">$</span>
+              <span class="price-value" id="starterPrice">39</span>
+              <span class="price-period">/month</span>
+            </div>
+            <button class="pricing-btn secondary">Start Free Trial</button>
+            <div class="pricing-features">
+              <div class="pricing-feature"><span class="feature-check">✓</span> Up to 10,000 records/month</div>
+              <div class="pricing-feature"><span class="feature-check">✓</span> 5 workflows</div>
+              <div class="pricing-feature"><span class="feature-check">✓</span> Basic integrations</div>
+              <div class="pricing-feature"><span class="feature-check">✓</span> Email support</div>
+            </div>
+          </div>
+          <div class="pricing-card popular">
+            <div class="popular-badge">Most Popular</div>
+            <h3 class="pricing-name">Professional</h3>
+            <p class="pricing-desc">For growing teams that need more power and flexibility</p>
+            <div class="pricing-price">
+              <span class="price-currency" id="proCurrency">$</span>
+              <span class="price-value" id="proPrice">119</span>
+              <span class="price-period">/month</span>
+            </div>
+            <button class="pricing-btn primary">Start Free Trial</button>
+            <div class="pricing-features">
+              <div class="pricing-feature"><span class="feature-check">✓</span> Up to 100,000 records/month</div>
+              <div class="pricing-feature"><span class="feature-check">✓</span> Unlimited workflows</div>
+              <div class="pricing-feature"><span class="feature-check">✓</span> Advanced integrations</div>
+              <div class="pricing-feature"><span class="feature-check">✓</span> Priority support</div>
+              <div class="pricing-feature"><span class="feature-check">✓</span> API access</div>
+            </div>
+          </div>
+          <div class="pricing-card">
+            <h3 class="pricing-name">Enterprise</h3>
+            <p class="pricing-desc">For large organizations with mission-critical needs</p>
+            <div class="pricing-price">
+              <span class="price-currency" id="entCurrency">$</span>
+              <span class="price-value" id="entPrice">399</span>
+              <span class="price-period">/month</span>
+            </div>
+            <button class="pricing-btn secondary">Start Free Trial</button>
+            <div class="pricing-features">
+              <div class="pricing-feature"><span class="feature-check">✓</span> Unlimited records</div>
+              <div class="pricing-feature"><span class="feature-check">✓</span> Unlimited everything</div>
+              <div class="pricing-feature"><span class="feature-check">✓</span> Custom integrations</div>
+              <div class="pricing-feature"><span class="feature-check">✓</span> Dedicated support</div>
+              <div class="pricing-feature"><span class="feature-check">✓</span> SSO & SAML</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Testimonials</span>
+          <h2 class="section-title">Trusted by industry leaders</h2>
+          <p class="section-desc">See how companies like yours are transforming their data operations with NexusAI.</p>
+        </div>
+        <div class="testimonial-main">
+          <svg class="quote-icon" width="48" height="48" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+          <p class="testimonial-text" id="testimonialText">
+            "NexusAI transformed our data operations completely. We reduced processing time from 24 hours to under 5 minutes, and the no-code interface means our entire team can build workflows."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar" id="authorInitials">SC</div>
+            <div class="author-info">
+              <div class="author-name" id="authorName">Sarah Chen</div>
+              <div class="author-role" id="authorRole">VP of Engineering at TechCorp</div>
+            </div>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+          </div>
+          <div class="testimonial-dots">
+            <div class="dot active" onclick="showTestimonial(0)"></div>
+            <div class="dot" onclick="showTestimonial(1)"></div>
+            <div class="dot" onclick="showTestimonial(2)"></div>
+            <div class="dot" onclick="showTestimonial(3)"></div>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">500+</div>
+            <div class="stat-text">Enterprise Clients</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">10M+</div>
+            <div class="stat-text">Records Daily</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">99.99%</div>
+            <div class="stat-text">Uptime SLA</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">60%</div>
+            <div class="stat-text">Cost Savings</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <h2 class="cta-title">Ready to transform your data operations?</h2>
+          <p class="cta-desc">Join 500+ enterprises already using NexusAI to automate their workflows.</p>
+          <div class="cta-buttons">
+            <button class="btn-primary">Start Free Trial</button>
+            <button class="btn-secondary">Schedule Demo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#" class="footer-logo">
+              <div class="logo-icon">
+                <svg width="24" height="24" fill="none" stroke="white" stroke-width="2">
+                  <path d="M6 10L12 6L18 10V18L12 22L6 18V10Z" stroke-linejoin="round"/>
+                  <circle cx="12" cy="12" r="3" fill="white"/>
+                </svg>
+              </div>
+              <span class="logo-text">NexusAI</span>
+            </a>
+            <p class="footer-tagline">Intelligent data automation for enterprise scale.</p>
+            <div class="footer-social">
+              <a href="#" class="social-link">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="#" class="social-link">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              <a href="#" class="social-link">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h4>Product</h4>
+            <div class="footer-links">
+              <a href="#features" class="footer-link">Features</a>
+              <a href="#pricing" class="footer-link">Pricing</a>
+              <a href="#" class="footer-link">Integrations</a>
+              <a href="#" class="footer-link">Changelog</a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <div class="footer-links">
+              <a href="#" class="footer-link">Documentation</a>
+              <a href="#" class="footer-link">API Reference</a>
+              <a href="#" class="footer-link">Guides</a>
+              <a href="#" class="footer-link">Blog</a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h4>Company</h4>
+            <div class="footer-links">
+              <a href="#" class="footer-link">About</a>
+              <a href="#" class="footer-link">Careers</a>
+              <a href="#" class="footer-link">Press</a>
+              <a href="#" class="footer-link">Contact</a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h4>Legal</h4>
+            <div class="footer-links">
+              <a href="#" class="footer-link">Privacy Policy</a>
+              <a href="#" class="footer-link">Terms of Service</a>
+              <a href="#" class="footer-link">Cookie Policy</a>
+              <a href="#" class="footer-link">Security</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          © 2024 NexusAI. All rights reserved. Made with ❤️ for data engineers
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Simple animated particle background for sign-in page -->
+  <script>
+    // ===== SIMPLE PARTICLE SIGN-IN BACKGROUND =====
+    const particleCanvas = document.getElementById('threeCanvas');
+    const particleCtx = particleCanvas.getContext('2d');
+    let particleAnimationId;
+    let particles = [];
+    let particleMouse = { x: null, y: null };
+
+    function resizeParticleCanvas() {
+      particleCanvas.width = window.innerWidth * window.devicePixelRatio;
+      particleCanvas.height = window.innerHeight * window.devicePixelRatio;
+      particleCanvas.style.width = window.innerWidth + 'px';
+      particleCanvas.style.height = window.innerHeight + 'px';
+      particleCtx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+    }
+
+    function initParticles() {
+      resizeParticleCanvas();
+      const count = Math.min(115, Math.max(60, Math.floor((window.innerWidth * window.innerHeight) / 14000)));
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - 0.5) * 0.42,
+        vy: (Math.random() - 0.5) * 0.42,
+        radius: Math.random() * 1.8 + 0.7,
+        alpha: Math.random() * 0.45 + 0.2,
+        hue: Math.random() > 0.45 ? 212 : 188
+      }));
+    }
+
+    function drawParticleBackground() {
+      particleAnimationId = requestAnimationFrame(drawParticleBackground);
+      particleCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+      const gradient = particleCtx.createRadialGradient(
+        window.innerWidth / 2, window.innerHeight / 2, 0,
+        window.innerWidth / 2, window.innerHeight / 2, Math.max(window.innerWidth, window.innerHeight) * 0.72
+      );
+      gradient.addColorStop(0, 'rgba(59, 130, 246, 0.055)');
+      gradient.addColorStop(1, 'rgba(2, 6, 23, 0)');
+      particleCtx.fillStyle = gradient;
+      particleCtx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (particleMouse.x !== null) {
+          const dx = p.x - particleMouse.x;
+          const dy = p.y - particleMouse.y;
+          const distance = Math.hypot(dx, dy);
+          if (distance < 120 && distance > 0) {
+            const push = (120 - distance) / 120;
+            p.x += (dx / distance) * push * 0.42;
+            p.y += (dy / distance) * push * 0.42;
+          }
+        }
+
+        if (p.x < -10) p.x = window.innerWidth + 10;
+        if (p.x > window.innerWidth + 10) p.x = -10;
+        if (p.y < -10) p.y = window.innerHeight + 10;
+        if (p.y > window.innerHeight + 10) p.y = -10;
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const distance = Math.hypot(dx, dy);
+          if (distance < 130) {
+            particleCtx.beginPath();
+            particleCtx.moveTo(p.x, p.y);
+            particleCtx.lineTo(q.x, q.y);
+            particleCtx.strokeStyle = `rgba(96, 165, 250, ${0.11 * (1 - distance / 130)})`;
+            particleCtx.lineWidth = 1;
+            particleCtx.stroke();
+          }
+        }
+
+        particleCtx.beginPath();
+        particleCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        particleCtx.fillStyle = `hsla(${p.hue}, 90%, 68%, ${p.alpha})`;
+        particleCtx.shadowBlur = 14;
+        particleCtx.shadowColor = `hsla(${p.hue}, 90%, 68%, 0.45)`;
+        particleCtx.fill();
+        particleCtx.shadowBlur = 0;
+      }
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      particleMouse.x = e.clientX;
+      particleMouse.y = e.clientY;
+    });
+
+    window.addEventListener('mouseleave', () => {
+      particleMouse.x = null;
+      particleMouse.y = null;
+    });
+
+    window.addEventListener('resize', initParticles);
+
+    initParticles();
+    drawParticleBackground();
+
+    // Keep the existing sign-in transition hook name unchanged.
+    window.__stopThreeAnimation = () => {
+      cancelAnimationFrame(particleAnimationId);
+    };
+  </script>
+
+  <script>
+    // ===== SIGN IN LOGIC =====
+    function togglePassword() {
+      const passwordInput = document.getElementById("password");
+      const eyeIcon = document.getElementById("eyeIcon");
+      const eyeOffIcon = document.getElementById("eyeOffIcon");
+      
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.style.display = "none";
+        eyeOffIcon.style.display = "block";
+      } else {
+        passwordInput.type = "password";
+        eyeIcon.style.display = "block";
+        eyeOffIcon.style.display = "none";
+      }
+    }
+
+    // PIN input - numeric only
+    document.addEventListener("DOMContentLoaded", function() {
+      const pinInput = document.getElementById("pin");
+      if (pinInput) {
+        pinInput.addEventListener("input", function() {
+          this.value = this.value.replace(/[^0-9]/g, "").slice(0, 4);
+        });
+      }
+    });
+    function handleSignIn(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const btn = document.getElementById('signinBtn');
+      const errorEl = document.getElementById('signinError');
+
+      // Reset error
+      errorEl.style.display = 'none';
+
+      if (!email || !password) {
+        errorEl.textContent = 'Please fill in all fields.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      // Simulate authentication (accept any non-empty credentials)
+      btn.classList.add('loading');
+
+      setTimeout(() => {
+        btn.classList.remove('loading');
+
+        // Extract display name from email
+        const namePart = email.split('@')[0];
+        const displayName = namePart.charAt(0).toUpperCase() + namePart.slice(1).replace(/[._]/g, ' ');
+        const initials = namePart.substring(0, 2).toUpperCase();
+
+        // Update user badge in navbar
+        document.getElementById('userAvatar').textContent = initials;
+        document.getElementById('userDisplayName').textContent = displayName;
+
+        // Transition: hide sign-in page, show main site
+        const signInPage = document.getElementById('signInPage');
+        const mainSite = document.getElementById('mainSite');
+
+        signInPage.classList.add('hide');
+        document.body.classList.add('site-active');
+
+        setTimeout(() => {
+          mainSite.classList.add('show');
+        }, 200);
+
+        // Stop Three.js animation after transition
+        setTimeout(() => {
+          if (window.__stopThreeAnimation) window.__stopThreeAnimation();
+          signInPage.style.display = 'none';
+        }, 1000);
+
+      }, 1500); // Simulated loading delay
+    }
+
+    function socialSignIn(provider) {
+      // Simulate social sign-in
+      const btn = document.getElementById('signinBtn');
+      btn.classList.add('loading');
+
+      setTimeout(() => {
+        btn.classList.remove('loading');
+
+        const displayName = provider === 'google' ? 'Google User' : 'GitHub User';
+        const initials = provider === 'google' ? 'GU' : 'GU';
+
+        document.getElementById('userAvatar').textContent = initials;
+        document.getElementById('userDisplayName').textContent = displayName;
+
+        const signInPage = document.getElementById('signInPage');
+        const mainSite = document.getElementById('mainSite');
+
+        signInPage.classList.add('hide');
+        document.body.classList.add('site-active');
+
+        setTimeout(() => {
+          mainSite.classList.add('show');
+        }, 200);
+
+        setTimeout(() => {
+          if (window.__stopThreeAnimation) window.__stopThreeAnimation();
+          signInPage.style.display = 'none';
+        }, 1000);
+      }, 1200);
+    }
+
+    // ===== MAIN SITE FUNCTIONALITY =====
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 20) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Pricing functionality
+    let currentBilling = 'annual';
+    let currentCurrency = { symbol: '$', multiplier: 1 };
+    const basePrices = { starter: 49, pro: 149, ent: 499 };
+
+    function setBilling(billing) {
+      currentBilling = billing;
+      document.getElementById('monthlyBtn').classList.toggle('active', billing === 'monthly');
+      document.getElementById('annualBtn').classList.toggle('active', billing === 'annual');
+      updatePrices();
+    }
+
+    function setCurrency(code, symbol, multiplier) {
+      currentCurrency = { symbol, multiplier };
+      ['usdBtn', 'eurBtn', 'inrBtn'].forEach(id => {
+        document.getElementById(id).classList.toggle('active', id.startsWith(code.toLowerCase().substring(0, 3)));
+      });
+      updatePrices();
+    }
+
+    function updatePrices() {
+      const discount = currentBilling === 'annual' ? 0.8 : 1;
+      document.getElementById('starterCurrency').textContent = currentCurrency.symbol;
+      document.getElementById('starterPrice').textContent = Math.round(basePrices.starter * currentCurrency.multiplier * discount);
+      document.getElementById('proCurrency').textContent = currentCurrency.symbol;
+      document.getElementById('proPrice').textContent = Math.round(basePrices.pro * currentCurrency.multiplier * discount);
+      document.getElementById('entCurrency').textContent = currentCurrency.symbol;
+      document.getElementById('entPrice').textContent = Math.round(basePrices.ent * currentCurrency.multiplier * discount);
+    }
+
+    // Testimonials
+    const testimonials = [
+      { text: '"NexusAI transformed our data operations completely. We reduced processing time from 24 hours to under 5 minutes, and the no-code interface means our entire team can build workflows."', name: 'Sarah Chen', role: 'VP of Engineering at TechCorp', initials: 'SC' },
+      { text: '"The ML pipeline capabilities are incredible. We went from months of model deployment time to just hours. The ROI was evident within the first month."', name: 'Michael Rodriguez', role: 'Data Architecture Lead at DataFlow Inc', initials: 'MR' },
+      { text: '"Enterprise-grade security and compliance made our audit process so much easier. The SOC2 certification gave our clients confidence."', name: 'Emily Watson', role: 'CTO at ScaleUp', initials: 'EW' },
+      { text: '"The real-time processing capabilities are game-changing. We can now make decisions based on live data instead of waiting for overnight batch jobs."', name: 'James Park', role: 'Head of Analytics at CloudFirst', initials: 'JP' }
+    ];
+
+    function showTestimonial(index) {
+      const t = testimonials[index];
+      document.getElementById('testimonialText').textContent = t.text;
+      document.getElementById('authorName').textContent = t.name;
+      document.getElementById('authorRole').textContent = t.role;
+      document.getElementById('authorInitials').textContent = t.initials;
+      document.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    // Auto-rotate testimonials
+    let currentTestimonial = 0;
+    setInterval(() => {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }, 5000);
+
+    // Initialize
+    updatePrices();
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a11bc53e9cb23f51',t:'MTc4MjQ3MjI3OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
